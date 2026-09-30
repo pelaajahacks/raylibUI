@@ -1,26 +1,32 @@
 #include "Button.hpp"
 
-Button::Button(Layout layout, const std::string& text)
-    : UIElement({0, 0, 0, 0}, layout),
-      text(text) {
-    int textSize = GuiGetStyle(DEFAULT, TEXT_SIZE);
-    int padding = GuiGetStyle(DEFAULT, TEXT_PADDING);
-    preferredBounds = {
-        0.0f, 0.0f,
-        static_cast<float>(MeasureText(text.c_str(), textSize) + 2 * padding) + 16.0f,
-        24.0f
-    };
-}
+Button::Button(const std::string& text)
+  : text(text) {
+  int textSize = GuiGetStyle(DEFAULT, TEXT_SIZE);
+  int padding = GuiGetStyle(DEFAULT, TEXT_PADDING);
+  layoutConfig.width =
+  static_cast<float>(MeasureText(text.c_str(), textSize) + 2 * padding);
 
-void Button::update() {
-    clicked = false;
+  layoutConfig.height = 24.0f;
 }
 
 void Button::draw() {
-    if (GuiButton(bounds, text.c_str()))
-        clicked = true;
+  // Cleared here, not in update(), so isClicked() stays readable for the whole
+  // frame after the press instead of being wiped before anything can see it.
+  clicked = false;
+
+  if (GuiButton(rect, text.c_str())) {
+    clicked = true;
+
+    if (onClick)
+      onClick();
+  }
 }
 
 bool Button::isClicked() const {
-    return clicked;
+  return clicked;
+}
+
+void Button::setOnClick(std::function<void()> onClick) {
+  this->onClick = std::move(onClick);
 }

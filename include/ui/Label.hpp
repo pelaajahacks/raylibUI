@@ -4,18 +4,17 @@
 
 #include <string>
 
-class Label : public UIElement
-{
-public:
-    Label(Layout layout, const std::string& text, Color color = BLACK, int fontSize = 20);
+class Label : public UIElement {
+  public:
+    Label(const std::string& text, Color color = BLACK, int fontSize = 20);
 
-    void update() override {};
+    void update() override {}
     void draw() override;
 
     void setText(const std::string& text);
     const std::string& GetText() const;
 
-private:
+  private:
     std::string text;
     int fontSize;
     Color color;

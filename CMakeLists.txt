@@ -21,6 +21,10 @@ target_include_directories(ui
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include/ui
 )
+target_compile_definitions(ui PUBLIC
+    LAY_FLOAT=1
+)
+
 target_link_libraries(ui PUBLIC
     raylib
 )

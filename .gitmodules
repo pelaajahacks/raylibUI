@@ -1,0 +1,7 @@
+[submodule "raygui"]
+	path = external/raygui
+	url = https://github.com/raysan5/raygui.git
+
+[submodule "layout"]
+	path = external/layout
+	url = https://github.com/randrew/layout
