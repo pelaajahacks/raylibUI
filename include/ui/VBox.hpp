@@ -4,8 +4,8 @@
 
 class VBox : public FlexBox {
 public:
-    explicit VBox(FlexConfig config = {})
-        : FlexBox(FlexDirection::Column, config)
+    explicit VBox(LayoutConfig layout = {})
+        : FlexBox(FlexDirection::Column, {}, layout)
     {
     }
 };

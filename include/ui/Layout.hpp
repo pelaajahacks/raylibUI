@@ -12,5 +12,6 @@ class Layout {
   private:
     lay_context ctx;
     lay_id build(UIElement& element, lay_id parent);
+    void applyFlex(lay_id id, const FlexConfig& flex);
     std::vector<std::pair<UIElement*, lay_id>> items;
 };

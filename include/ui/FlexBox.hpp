@@ -9,16 +9,21 @@ enum class FlexDirection {
 };
 
 class FlexBox : public Panel {
-public:
+  public:
     FlexBox(
         FlexDirection direction,
-        FlexConfig config = {}
-    );
+        FlexConfig config = {},
+        LayoutConfig layout = {}
+    )
+        : Panel(layout),
+          direction(direction),
+          config(config)
+    {}
 
-    FlexDirection getDirection() const;
-    const FlexConfig& getConfig() const;
+    FlexDirection getDirection() const { return direction; }
+    const FlexConfig& getFlex() const { return config; }
 
-protected:
+  protected:
     FlexDirection direction;
     FlexConfig config;
 };

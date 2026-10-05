@@ -34,25 +34,48 @@ lay_id Layout::build(UIElement& element, lay_id parent) {
   lay_id id = lay_item(&ctx);
 
   if (parent != LAY_INVALID_ID)
-    lay_insert(&ctx, parent, id);
+      lay_insert(&ctx, parent, id);
+
+  const auto& config = element.getLayout();
 
   lay_set_size_xy(
-    &ctx,
-    id,
-    element.getLayout().width,
-    element.getLayout().height
+      &ctx,
+      id,
+      config.width,
+      config.height
   );
 
-  // layout.h defaults to the free-layout model with centred attachment, so every
-  // child of a parent gets the exact same centred rect -- they all overlap and
-  // only the last one drawn is visible. Stack children top-to-bottom instead.
-  lay_set_contain(&ctx, id, LAY_COLUMN | LAY_START);
-  lay_set_behave(&ctx, id, LAY_LEFT | LAY_TOP);
+  switch (config.mode) {
+    case LayoutMode::None:
+        lay_set_behave(&ctx, id, LAY_LEFT | LAY_TOP);
+        break;
 
+    case LayoutMode::Flex:
+        applyFlex(id, config.flex);
+        break;
+  }
   items.emplace_back(&element, id);
 
   for (const auto& child : element.getChildren())
-    build(*child, id);
+      build(*child, id);
 
   return id;
+}
+
+void Layout::applyFlex(lay_id id, const FlexConfig& flex) {
+    uint32_t contain = LAY_COLUMN;
+
+    switch (flex.justify) {
+        case Justify::Start:
+            contain |= LAY_START;
+            break;
+        case Justify::Center:
+            contain |= LAY_CENTER;
+            break;
+        case Justify::End:
+            contain |= LAY_END;
+            break;
+    }
+
+    lay_set_contain(&ctx, id, contain);
 }
