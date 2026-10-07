@@ -5,7 +5,7 @@
 
 #include <functional>
 #include <string>
-class Button : public UIElement {
+class Button : public Label {
   public:
     Button(const std::string& text);
 
@@ -16,7 +16,6 @@ class Button : public UIElement {
     void setOnClick(std::function<void()> onClick);
 
   private:
-    std::string text;
     bool clicked = false;
     std::function<void()> onClick;
 };
