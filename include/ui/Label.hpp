@@ -15,7 +15,8 @@ class Label : public UIElement {
     const std::string& GetText() const;
 
   private:
-    std::string text;
     int fontSize;
     Color color;
+  protected:
+    std::string text;
 };

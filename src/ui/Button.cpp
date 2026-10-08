@@ -1,7 +1,7 @@
 #include "Button.hpp"
 
 Button::Button(const std::string& text)
-  : text(text) {
+  : Label(text) {
   // Size the box to the label instead of the other way around.
   // GuiGetTextWidth() measures with the same font, size and spacing that
   // GuiDrawText() renders with, and GuiButton() draws the text into
