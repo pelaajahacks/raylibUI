@@ -1,6 +1,8 @@
 #include "Label.hpp"
 #include "raylib.h"
 
+namespace ui {
+
 Label::Label(const std::string& text, Color color, int fontSize)
     : text(text),
       fontSize(fontSize),
@@ -26,3 +28,5 @@ void Label::setText(const std::string& newText) {
 const std::string& Label::GetText() const {
     return text;
 }
+
+} // namespace ui

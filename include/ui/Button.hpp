@@ -5,6 +5,9 @@
 
 #include <functional>
 #include <string>
+
+namespace ui {
+
 class Button : public Label {
   public:
     Button(const std::string& text);
@@ -19,3 +22,5 @@ class Button : public Label {
     bool clicked = false;
     std::function<void()> onClick;
 };
+
+} // namespace ui

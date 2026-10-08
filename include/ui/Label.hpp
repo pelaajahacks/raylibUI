@@ -4,6 +4,8 @@
 
 #include <string>
 
+namespace ui {
+
 class Label : public UIElement {
   public:
     Label(const std::string& text, Color color = BLACK, int fontSize = 20);
@@ -20,3 +22,5 @@ class Label : public UIElement {
   protected:
     std::string text;
 };
+
+} // namespace ui

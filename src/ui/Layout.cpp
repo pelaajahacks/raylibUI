@@ -3,6 +3,8 @@
 #define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
+namespace ui {
+
 Layout::Layout() {
   lay_init_context(&ctx);
 }
@@ -81,3 +83,5 @@ void Layout::applyFlex(lay_id id, const FlexConfig& flex) {
 
     lay_set_contain(&ctx, id, contain);
 }
+
+} // namespace ui

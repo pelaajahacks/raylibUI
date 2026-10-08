@@ -3,6 +3,8 @@
 #include "Panel.hpp"
 #include "FlexConfig.hpp"
 
+namespace ui {
+
 enum class FlexDirection {
     Row,
     Column
@@ -27,3 +29,5 @@ class FlexBox : public Panel {
     FlexDirection direction;
     FlexConfig config;
 };
+
+} // namespace ui

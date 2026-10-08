@@ -1,5 +1,7 @@
 #pragma once
 
+namespace ui {
+
 enum class Justify {
     Start,
     Center,
@@ -17,3 +19,5 @@ struct FlexConfig {
     Align align = Align::Start;
     float gap = 0.0f;
 };
+
+} // namespace ui

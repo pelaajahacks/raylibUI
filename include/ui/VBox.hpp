@@ -2,6 +2,8 @@
 
 #include "FlexBox.hpp"
 
+namespace ui {
+
 class VBox : public FlexBox {
 public:
     explicit VBox(LayoutConfig layout = {})
@@ -9,3 +11,5 @@ public:
     {
     }
 };
+
+} // namespace ui

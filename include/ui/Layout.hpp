@@ -4,6 +4,8 @@
 #include "layout.h"
 #include <vector>
 
+namespace ui {
+
 class Layout {
   public:
     Layout();
@@ -15,3 +17,5 @@ class Layout {
     void applyFlex(lay_id id, const FlexConfig& flex);
     std::vector<std::pair<UIElement*, lay_id>> items;
 };
+
+} // namespace ui

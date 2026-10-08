@@ -4,6 +4,7 @@
 #include <memory>
 #include <vector>
 
+namespace ui {
 
 class Panel : public UIElement {
 public:
@@ -15,3 +16,5 @@ public:
 
   void add(std::unique_ptr<UIElement> child) { children.push_back(std::move(child)); };
 };
+
+} // namespace ui

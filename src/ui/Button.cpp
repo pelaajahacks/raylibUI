@@ -1,5 +1,7 @@
 #include "Button.hpp"
 
+namespace ui {
+
 Button::Button(const std::string& text)
   : Label(text) {
   // Size the box to the label instead of the other way around.
@@ -40,3 +42,5 @@ bool Button::isClicked() const {
 void Button::setOnClick(std::function<void()> onClick) {
   this->onClick = std::move(onClick);
 }
+
+} // namespace ui

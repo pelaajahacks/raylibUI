@@ -4,6 +4,8 @@
 #include <vector>
 #include <memory>
 
+namespace ui {
+
 class UIElement {
   public:
     UIElement(LayoutConfig layoutConfig = {})
@@ -26,3 +28,5 @@ class UIElement {
     LayoutConfig layoutConfig{};
     std::vector<std::unique_ptr<UIElement>> children;
 };
+
+} // namespace ui
