@@ -1,5 +1,7 @@
 #define LAY_IMPLEMENTATION
 #include "Layout.hpp"
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
 
 Layout::Layout() {
   lay_init_context(&ctx);

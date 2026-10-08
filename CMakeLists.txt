@@ -16,7 +16,6 @@ add_library(ui STATIC
     src/ui/Button.cpp
     src/ui/Label.cpp
     src/ui/Layout.cpp
-    src/ui/Panel.cpp
 )
 
 target_include_directories(ui
